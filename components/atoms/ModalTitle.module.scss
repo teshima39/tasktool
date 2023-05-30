@@ -1,0 +1,12 @@
+.modal_ttl{
+  font-size: 26px;
+  letter-spacing: 0.07em;
+  text-align: center;
+  margin: 0 auto 30px;
+  border-bottom: 1px solid #aaa;
+  padding: 0 0 10px;
+
+  & input{
+    text-align: center;
+  }
+}
