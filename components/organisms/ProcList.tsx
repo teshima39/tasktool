@@ -21,7 +21,7 @@ export const ProcList = () => {
 
   type TaskList = Array<[string, ...Array<Task>]>;
 
-  const nowDate = useNowDate();
+  const nowDate = "0000";
 
   const [taskList, setTaskList] = useState<TaskList>(
     [
@@ -65,15 +65,21 @@ export const ProcList = () => {
 
   useEffect(() => {
     let taskListJson = localStorage.getItem('taskList') || '';
-    let taskList = JSON.parse(taskListJson);
-    setTaskList(taskList);
+    if (taskListJson) {
+      let getTaskListJson = JSON.parse(`${taskListJson}`);
+      setTaskList(getTaskListJson);
+    }else{
+      setTaskList(taskList);
+    }
+
+    
   }, []);
 
   useDidUpdateEffect(() => {
     let taskListJson = JSON.stringify(taskList, undefined, 1);
-    localStorage.setItem('taskList',taskListJson);
+    localStorage.setItem('taskList', taskListJson);
     console.log('OK')
-  },[taskList]);
+  }, [taskList]);
 
   const [mousepositionX, setmousepositionX] = useState<number>(0);
   const [mousepositionY, setmousepositionY] = useState<number>(0);
@@ -116,7 +122,7 @@ export const ProcList = () => {
     if (listNo != null && taskNo != null && elemBelowtaskNo != null && elemBelowtaskNo >= 0 && listNo != elemBelowtaskNo) {
       console.log('OK')
       let newTaskList = [...taskList]
-      let insertTaskList =[...taskList][elemBelowtaskNo]
+      let insertTaskList = [...taskList][elemBelowtaskNo]
       let beforeTaskList = taskList[listNo]
       let moveTask = taskList[listNo][taskNo]
       beforeTaskList.splice(taskNo, 1)
@@ -270,10 +276,10 @@ export const ProcList = () => {
 
   const onChangeElement = (event: ChangeEvent<HTMLInputElement>, listNo: number, taskNo: number, taskKey: string) => {
     let changeList: any = taskList[listNo]
-    if(taskKey == 'title' && event.target.value.length <= 10){
+    if (taskKey == 'title' && event.target.value.length <= 10) {
       changeList[taskNo][taskKey] = event.target.value;
     }
-    if(taskKey == 'comment'){
+    if (taskKey == 'comment') {
       changeList[taskNo][taskKey] = event.target.value;
     }
     setTaskList(
