@@ -76,7 +76,6 @@ export const ProcList = () => {
   useDidUpdateEffect(() => {
     let taskListJson = JSON.stringify(taskList, undefined, 1);
     localStorage.setItem('taskList', taskListJson);
-    console.log('OK')
   }, [taskList]);
 
   const [mousepositionX, setmousepositionX] = useState<number>(0);
@@ -316,7 +315,6 @@ export const ProcList = () => {
       node.style.display = 'none';
     }
   }
-
 
   return (
     <ul className={style_procList.proc_list} id="ul">
