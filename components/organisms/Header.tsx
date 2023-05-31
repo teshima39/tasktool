@@ -7,39 +7,39 @@ export const Header = () => {
   const nowDate = useNowDate();
 
   const onReset = () => {
-    const taskList = [
-      ['Procttl00',
+    const taskList =  [
+      ['プロセス00',
         {
-          'title': 'task00',
+          'title': 'タスク00',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
-          'title': 'task01',
+          'title': 'タスク01',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
-          'title': 'task02',
+          'title': 'タスク02',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
-      ['Procttl01',
+      ['プロセス01',
         {
-          'title': 'task03',
+          'title': 'タスク03',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
-          'title': 'task04',
+          'title': 'タスク04',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
-      ['Procttl02',
+      ['プロセス02',
         {
-          'title': 'task05',
+          'title': 'タスク05',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
@@ -54,7 +54,11 @@ export const Header = () => {
   }
 
   return (
-    <header className={style_header.header}><h1>APP-Titile</h1>
+    <header className={style_header.header}>
+      <h1>APP-Titile</h1>
+      <div className={style_header.txt}>
+        <p>各プロセス、タスクはドラックし、移動することができます。<br />（プロセスは<span className={style_header.purple}>網目</span>部分が掴めます。）<br /><span className={style_header.blue}>編集</span>アイコンでタスクの内容を編集でき、<br />ゴミ箱アイコンで削除できます。</p>
+      </div>
       <p className={style_header.reset_btn} onClick={() => { onReset() }}>初期化する</p></header>
   )
 }

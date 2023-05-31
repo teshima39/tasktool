@@ -25,38 +25,38 @@ export const ProcList = () => {
 
   const [taskList, setTaskList] = useState<TaskList>(
     [
-      ['Procttl00',
+      ['プロセス00',
         {
-          'title': 'task00',
+          'title': 'タスク00',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
-          'title': 'task01',
+          'title': 'タスク01',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
-          'title': 'task02',
+          'title': 'タスク02',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
-      ['Procttl01',
+      ['プロセス01',
         {
-          'title': 'task03',
+          'title': 'タスク03',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
-          'title': 'task04',
+          'title': 'タスク04',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
-      ['Procttl02',
+      ['プロセス02',
         {
-          'title': 'task05',
+          'title': 'タスク05',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
@@ -68,9 +68,10 @@ export const ProcList = () => {
     if (taskListJson) {
       let getTaskListJson = JSON.parse(`${taskListJson}`);
       setTaskList(getTaskListJson);
-    }else{
+    } else {
       setTaskList(taskList);
-    }}, []);
+    }
+  }, []);
 
   useDidUpdateEffect(() => {
     let taskListJson = JSON.stringify(taskList, undefined, 1);
@@ -139,9 +140,9 @@ export const ProcList = () => {
   const onClickAddProcess = () => {
     let newTaskList = [...taskList];
     newTaskList.push(
-      ["Procttl",
+      ["newプロセス",
         {
-          'title': 'task',
+          'title': 'newタスク',
           'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
@@ -156,7 +157,7 @@ export const ProcList = () => {
     let newTask = [...taskList[addtaskNo]]
     newTask.push(
       {
-        'title': 'newtask',
+        'title': 'newタスク',
         'date': `${nowDate}`,
         'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
       }
