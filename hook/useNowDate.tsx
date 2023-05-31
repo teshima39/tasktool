@@ -1,5 +1,7 @@
+import { utcToZonedTime } from 'date-fns-tz';
+
 export const useNowDate = () => {
-  let d = new Date();
+  let d = utcToZonedTime(new Date(), 'Asia/Tokyo');
   let year = Number(d.getFullYear().toString().slice(-2));
   let month = d.getMonth() + 1;
   let day = d.getDate();
