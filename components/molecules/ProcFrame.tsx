@@ -15,7 +15,7 @@ export const ProcFrame: FC<Props> = (props) => {
 
   return (
     <li className={style_procFrame.list_bg}>
-      <div className={style_procFrame.list_frame} key={props.index} id={`List__${props.index}`}
+      <div className={style_procFrame.list_frame} id={`List__${props.index}`}
         style={props.grabListNo == props.index ? props.trans as CSSProperties : undefined}>
         <div
           className={style_procFrame.grab_area}

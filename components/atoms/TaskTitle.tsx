@@ -16,7 +16,7 @@ type Props = {
 
 export const TaskTitle: FC<Props> = (props) => {
   return (
-    <div key={props.taskNo} onMouseDown={props.taskMouseDown}
+    <div onMouseDown={props.taskMouseDown}
       style={props.altGrabListNo == props.listNo && props.grabTaskNo == props.taskNo ? props.trans as CSSProperties : undefined}
       className={style_taskTitle.task_frame}
       id={`task__${props.listNo}${props.taskNo}`}>

@@ -1,4 +1,4 @@
-import {MouseEvent, ReactNode, FC } from 'react'
+import {MouseEvent, ReactNode, FC,Fragment } from 'react'
 import style_taskList from "components/molecules/TaskList.module.scss"
 import AddIcon from '@mui/icons-material/Add';
 import 'ress';
@@ -38,13 +38,13 @@ export const TaskList: FC<Props> = (props) => {
       {props.listElement.map((taskElement: any, taskNo: number) => {
         if (taskNo != 0) {
           return (
-            <>
+            <Fragment key={taskNo}>
               <dd>
                 <TaskTitle taskNo={taskNo} listNo={props.listNo} taskMouseDown={props.taskMouseDown} grabTaskNo={props.grabTaskNo} altGrabListNo={props.altGrabListNo} trans={props.trans} taskElement={taskElement} openModal={openModal}></TaskTitle>
 
                 <ModalFrame listNo={props.listNo} taskNo={taskNo} onDeleteTask={props.onDeleteTask} onChangeElement={props.onChangeElement} taskElement={taskElement} closeModal={props.closeModal}></ModalFrame>
               </dd>
-            </>
+            </Fragment>
           )
         }
       })}

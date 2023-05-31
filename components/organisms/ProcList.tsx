@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect } from "react"
+import { useState, ChangeEvent, useEffect,Fragment } from "react"
 import style_procList from "components/organisms/ProcList.module.scss"
 import 'ress'
 import AddIcon from '@mui/icons-material/Add';
@@ -304,25 +304,25 @@ export const ProcList = () => {
       {taskList.map((listElement, index) => {
         const listNo = index;
         return (
-          <>
-            <ProcFrame index={index} grabListNo={grabListNo} grabTaskNo={grabTaskNo} listMouseDown={listMouseDown} trans={trans}>
+          <Fragment  key={index}>
+            <ProcFrame index={index} grabListNo={grabListNo} grabTaskNo={grabTaskNo} listMouseDown={listMouseDown} trans={trans} key={index}>
               <dl>
                 <ProcTitle index={index} onChangeProcttl={onChangeProcttl}
-                  value={taskList[index][0]}>
+                  value={taskList[index][0]} key={index}>
                 </ProcTitle>
                 <DeleteIcon fontSize="small" className={style_procList.list_delete} onClick={() => onDeleteList(index)}></DeleteIcon>
                 <TaskList listElement={listElement} index={index} listNo={listNo} grabTaskNo={grabTaskNo} altGrabListNo={altGrabListNo} taskMouseDown={taskMouseDown} onClickAddTask={onClickAddTask} trans={trans} onChangeElement={onChangeElement}
-                  onDeleteTask={onDeleteTask} closeModal={closeModal}>
+                  onDeleteTask={onDeleteTask} closeModal={closeModal} >
                 </TaskList>
               </dl>
             </ProcFrame>
             <li id={`listInsertArea__${index + 1}`} className={`${style_procList.insertArea} ${grabListNo != null ? style_procList.insertArea_active : ''} `}>
             </li>
-          </>
+          </Fragment>
         )
       })}
       <li className={style_procList.list_last} style={{ visibility: taskList.length < 5 ? "visible" : "hidden" }}>
-        < AddIcon className={style_procList.addIcon} fontSize="large" onClick={onClickAddProcess} ></ AddIcon>
+        < AddIcon className={style_procList.addIcon} onClick={onClickAddProcess} ></ AddIcon>
       </li>
     </ul>
   )
