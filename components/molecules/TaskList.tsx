@@ -19,7 +19,7 @@ type Props = {
   trans: any;
   taskMouseDown: (event:MouseEvent<HTMLDivElement>) => void;
   onClickAddTask: (event: MouseEvent<SVGSVGElement>) => void;
-  onChangeElement: (event: React.ChangeEvent<HTMLInputElement>,listNo: number, taskNo: number, taskKey: string) => void;
+  onChangeElement: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,listNo: number, taskNo: number, taskKey: string) => void;
   onDeleteTask:(listNo: number,taskNo: number) => void;
   closeModal:(listNo: number,taskNo: number) => void;
 }

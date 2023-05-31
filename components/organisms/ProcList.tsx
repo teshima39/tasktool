@@ -252,7 +252,7 @@ export const ProcList = () => {
     }
   };
 
-  const onChangeElement = (event: ChangeEvent<HTMLInputElement>, listNo: number, taskNo: number, taskKey: string) => {
+  const onChangeElement = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, listNo: number, taskNo: number, taskKey: string) => {
     let changeList: any = taskList[listNo]
     if (taskKey == 'title' && event.target.value.length <= 10) {
       changeList[taskNo][taskKey] = event.target.value;
