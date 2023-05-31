@@ -54,7 +54,7 @@ export const Header = () => {
   }
 
   return (
-    <header className={style_header.header}><h1>TIssaTLE</h1>
-      <p onClick={() => { onReset() }}>初期化する</p></header>
+    <header className={style_header.header}><h1>APP-Titile</h1>
+      <p className={style_header.reset_btn} onClick={() => { onReset() }}>初期化する</p></header>
   )
 }

@@ -21,7 +21,7 @@ export const ProcList = () => {
 
   type TaskList = Array<[string, ...Array<Task>]>;
 
-  const nowDate = "0000";
+  const nowDate = useNowDate();
 
   const [taskList, setTaskList] = useState<TaskList>(
     [
@@ -70,10 +70,7 @@ export const ProcList = () => {
       setTaskList(getTaskListJson);
     }else{
       setTaskList(taskList);
-    }
-
-    
-  }, []);
+    }}, []);
 
   useDidUpdateEffect(() => {
     let taskListJson = JSON.stringify(taskList, undefined, 1);
