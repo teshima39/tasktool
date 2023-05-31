@@ -1,27 +1,28 @@
-import { ReactNode, FC } from 'react'
+import {MouseEvent, ReactNode, FC } from 'react'
 import style_taskList from "components/molecules/TaskList.module.scss"
 import AddIcon from '@mui/icons-material/Add';
 import 'ress';
 import { TaskTitle } from '../atoms/TaskTitle';
 import { ModalFrame } from './ModalFrame';
+import { Task } from "../../types/task";
 
 
+type TaskList = [string, ...Task[]];
 
 type Props = {
   children?: ReactNode;
-  listElement: any;
+  listElement:TaskList;
   index: number;
   listNo: number;
   grabTaskNo: number | null;
   altGrabListNo: number | null;
-  taskMouseDown: any;
-  onClickAddTask: any;
   trans: any;
-  onChangeElement: any
-  onDeleteTask: any
-  closeModal: any
+  taskMouseDown: (event:MouseEvent<HTMLDivElement>) => void;
+  onClickAddTask: (event: MouseEvent<SVGSVGElement>) => void;
+  onChangeElement: (event: React.ChangeEvent<HTMLInputElement>,listNo: number, taskNo: number, taskKey: string) => void;
+  onDeleteTask:(listNo: number,taskNo: number) => void;
+  closeModal:(listNo: number,taskNo: number) => void;
 }
-
 
 export const TaskList: FC<Props> = (props) => {
 
@@ -54,7 +55,6 @@ export const TaskList: FC<Props> = (props) => {
           onClick={props.onClickAddTask}
           id={String(props.index)} />
       </dd>
-
     </>
   )
 }

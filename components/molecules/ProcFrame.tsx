@@ -4,10 +4,10 @@ import 'ress'
 
 type Props = {
   children?: ReactNode;
-  index: any;
+  index: number;
   grabListNo: number | null;
   grabTaskNo: number | null;
-  listMouseDown: any;
+  listMouseDown: (event:React.MouseEvent<HTMLDivElement>) => void;
   trans: any;
 }
 

@@ -2,22 +2,15 @@ import { useState, ChangeEvent, useEffect } from "react"
 import style_procList from "components/organisms/ProcList.module.scss"
 import 'ress'
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { ProcFrame } from "../molecules/ProcFrame";
 import { TaskList } from "../molecules/TaskList";
 import { ProcTitle } from "../atoms/ProcTitle";
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useDidUpdateEffect } from "@/hook/useDidUpdateEffect";
 import { useNowDate } from "@/hook/useNowDate"
+import { Task } from "../../types/task";
 
 export const ProcList = () => {
-
-  console.log("reload")
-
-  type Task = {
-    title: string;
-    date: string;
-    comment: string;
-  };
 
   type TaskList = Array<[string, ...Array<Task>]>;
 
@@ -110,9 +103,7 @@ export const ProcList = () => {
     setGrabTaskNo(null);
     setGrabListNo(null);
     setAltGrabListNo(null);
-    listNo = null;
-    taskNo = null;
-    elemBelowlistNo = null;
+
   };
 
   const taskSort = (listNo: number | null, taskNo: number | null, elemBelowtaskNo: number | null) => {
@@ -131,9 +122,7 @@ export const ProcList = () => {
     setGrabTaskNo(null);
     setGrabListNo(null);
     setAltGrabListNo(null);
-    listNo = null;
-    taskNo = null;
-    elemBelowtaskNo = null;
+
   };
 
   const onClickAddProcess = () => {
@@ -165,7 +154,7 @@ export const ProcList = () => {
     setTaskList(newTaskList)
   };
 
-  const listMouseDown = (event: MouseEvent) => {
+  const listMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     const eventNode = event.currentTarget as HTMLDivElement;
     grabIndex = Number(eventNode.getAttribute('id')?.replace("grabArea__", ""))
     setGrabListNo(grabIndex);
@@ -202,10 +191,6 @@ export const ProcList = () => {
         document.removeEventListener("mousemove", listMouseMove);
         setmousepositionX(0);
         setmousepositionY(0);
-        grabPositionX = 0;
-        grabPositionY = 0;
-        elemBelowlistNo = null;
-        grabIndex = null;
         setGrabTaskNo(null);
         setGrabListNo(null);
         setAltGrabListNo(null);
@@ -213,9 +198,8 @@ export const ProcList = () => {
     };
   };
 
-  const taskMouseDown = (event: MouseEvent) => {
-    const eventNode = event.currentTarget as HTMLDivElement;
-
+  const taskMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    const eventNode = event.currentTarget;
 
     const taskMouseMove = (event: MouseEvent) => {
       if (eventNode) {
@@ -249,9 +233,6 @@ export const ProcList = () => {
         document.removeEventListener("mousemove", taskMouseMove);
         setmousepositionX(0);
         setmousepositionY(0);
-        grabPositionX = 0;
-        grabPositionY = 0;
-        elemBelowtaskNo = null;
         setGrabTaskNo(null);
         setGrabListNo(null);
         setAltGrabListNo(null);

@@ -4,8 +4,8 @@ import style_procTitle from "components/atoms/ProcTitle.module.scss"
 type Props = {
   children?: ReactNode
   index: number
-  value: any
-  onChangeProcttl: any
+  value: string;
+  onChangeProcttl: (event: React.ChangeEvent<HTMLInputElement>, listNo: number) => void;
 }
 
 export const ProcTitle: FC<Props> = (props) => {

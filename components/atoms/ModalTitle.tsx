@@ -1,11 +1,12 @@
 import { FC } from 'react'
 import style_modalTitle from "components/atoms/ModalTitle.module.scss"
+import { Task } from "../../types/task";
 
 type Props = {
-  onChangeElement: any
+  onChangeElement: (event: React.ChangeEvent<HTMLInputElement>,listNo: number, taskNo: number, taskKey: string) => void;
   listNo: number
   taskNo: number
-  taskElement: any
+  taskElement: Task;
 }
 
 export const ModalTitle: FC<Props> = (props) => {

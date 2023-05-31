@@ -1,15 +1,16 @@
 import { FC } from 'react'
 import style_modalComment from "components/atoms/ModalComment.module.scss"
+import { Task } from "../../types/task";
 
 type Props = {
-  onChangeElement:any
-  listNo:number
-  taskNo:number
-  taskElement:any
+  onChangeElement: (event: React.ChangeEvent<HTMLTextAreaElement>, listNo: number, taskNo: number, taskKey: string) => void;
+  listNo: number;
+  taskNo: number;
+  taskElement: Task;
 }
 
 export const ModalComment: FC<Props> = (props) => {
   return (
-    <p className={style_modalComment.modal_comment}><textarea onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => props.onChangeElement(event, props.listNo, props.taskNo, "comment")} value={props.taskElement.comment} /></p>
+    <p className={style_modalComment.modal_comment}>      <textarea onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => props.onChangeElement(event, props.listNo, props.taskNo, "comment")} value={props.taskElement.comment} /></p>
   )
 }

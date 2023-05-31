@@ -6,14 +6,16 @@ import 'ress'
 import { ModalTitle } from '../atoms/ModalTitle';
 import { ModalDate } from '../atoms/ModalDate';
 import { ModalComment } from '../atoms/ModalComment';
+import { Task } from "../../types/task";
+
 
 type Props = {
-  listNo: number
-  taskNo: number
-  onDeleteTask: any
-  onChangeElement: any
-  taskElement: any
-  closeModal: any
+  listNo: number;
+  taskNo: number;
+ taskElement: Task;
+  onChangeElement: (event: React.ChangeEvent<HTMLInputElement> |  React.ChangeEvent<HTMLTextAreaElement>,listNo: number, taskNo: number, taskKey: string) => void;
+  closeModal: (listNo: number,taskNo: number) => void;
+  onDeleteTask:(listNo: number,taskNo: number) => void;
 }
 
 export const ModalFrame: FC<Props> = (props) => {
@@ -29,7 +31,7 @@ export const ModalFrame: FC<Props> = (props) => {
 
         <ModalTitle onChangeElement={props.onChangeElement} listNo={props.listNo} taskNo={props.taskNo} taskElement={props.taskElement}></ModalTitle>
 
-        <ModalDate onChangeElement={props.onChangeElement} listNo={props.listNo} taskNo={props.taskNo} taskElement={props.taskElement}></ModalDate>
+        <ModalDate taskElement={props.taskElement}></ModalDate>
 
         <ModalComment onChangeElement={props.onChangeElement} listNo={props.listNo} taskNo={props.taskNo} taskElement={props.taskElement}></ModalComment>
       </div>

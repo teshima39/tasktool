@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import style_modalDate from "components/atoms/ModalDate.module.scss"
+import { Task } from "../../types/task";
+
 
 type Props = {
-  onChangeElement: any
-  listNo: number
-  taskNo: number
-  taskElement: any
+  taskElement: Task;
 }
 
 export const ModalDate: FC<Props> = (props) => {

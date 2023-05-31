@@ -7,7 +7,7 @@ export const Header = () => {
   const nowDate = useNowDate();
 
   const onReset = () => {
-    const taskList =  [
+    const taskList = [
       ['プロセス00',
         {
           'title': 'タスク00',
