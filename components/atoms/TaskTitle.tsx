@@ -21,7 +21,7 @@ export const TaskTitle: FC<Props> = (props) => {
       className={style_taskTitle.task_frame}
       id={`task__${props.listNo}${props.taskNo}`}>
       {props.taskElement.title}
-      <EditIcon className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.listNo, props.taskNo)}></EditIcon>
+      <EditIcon fontSize='large' className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.listNo, props.taskNo)}></EditIcon>
     </div>
   )
 }
