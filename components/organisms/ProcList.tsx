@@ -14,43 +14,41 @@ export const ProcList = () => {
 
   type TaskList = Array<[string, ...Array<Task>]>;
 
-  const nowDate = useNowDate();
-
   const [taskList, setTaskList] = useState<TaskList>(
     [
       ['プロセス00',
         {
           'title': 'タスク00',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク01',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク02',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス01',
         {
           'title': 'タスク03',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク04',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス02',
         {
           'title': 'タスク05',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
     ]
@@ -131,7 +129,7 @@ export const ProcList = () => {
       ["newプロセス",
         {
           'title': 'newタスク',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
     );
@@ -146,7 +144,7 @@ export const ProcList = () => {
     newTask.push(
       {
         'title': 'newタスク',
-        'date': `${nowDate}`,
+        'date': `${useNowDate()}`,
         'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
       }
     )

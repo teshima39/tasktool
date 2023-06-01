@@ -4,43 +4,41 @@ import 'ress'
 
 export const Header = () => {
 
-  const nowDate = useNowDate();
-
   const onReset = () => {
     const taskList = [
       ['プロセス00',
         {
           'title': 'タスク00',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク01',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク02',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス01',
         {
           'title': 'タスク03',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク04',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス02',
         {
           'title': 'タスク05',
-          'date': `${nowDate}`,
+          'date': `${useNowDate()}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
     ]
