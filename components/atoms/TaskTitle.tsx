@@ -20,8 +20,10 @@ export const TaskTitle: FC<Props> = (props) => {
       style={props.altGrabListNo == props.listNo && props.grabTaskNo == props.taskNo ? props.trans as CSSProperties : undefined}
       className={style_taskTitle.task_frame}
       id={`task__${props.listNo}${props.taskNo}`}>
+
       {props.taskElement.title}
-      <EditIcon fontSize='large' className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.listNo, props.taskNo)}></EditIcon>
+      
+      <EditIcon fontSize='medium' className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.listNo, props.taskNo)}></EditIcon>
     </div>
   )
 }

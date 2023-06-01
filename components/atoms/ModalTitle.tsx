@@ -11,6 +11,6 @@ type Props = {
 
 export const ModalTitle: FC<Props> = (props) => {
   return (
-    <h3 className={style_modalTitle.modal_ttl}><input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.onChangeElement(event, props.listNo, props.taskNo, "title")} value={props.taskElement.title} /></h3>
+    <input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.onChangeElement(event, props.listNo, props.taskNo, "title")} value={props.taskElement.title} className={style_modalTitle.modal_ttl} />
   )
 }

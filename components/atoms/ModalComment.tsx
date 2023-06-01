@@ -11,6 +11,6 @@ type Props = {
 
 export const ModalComment: FC<Props> = (props) => {
   return (
-    <p className={style_modalComment.modal_comment}>      <textarea onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => props.onChangeElement(event, props.listNo, props.taskNo, "comment")} value={props.taskElement.comment} /></p>
+    <textarea onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => props.onChangeElement(event, props.listNo, props.taskNo, "comment")} value={props.taskElement.comment} className={style_modalComment.modal_comment} />
   )
 }
