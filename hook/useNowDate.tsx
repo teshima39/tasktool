@@ -1,4 +1,4 @@
-import { utcToZonedTime } from 'date-fns-tz';
+import { utcToZonedTime } from 'date-fns-tz'
 
 export const useNowDate = () => {
   let d = utcToZonedTime(new Date(), 'Asia/Tokyo');
