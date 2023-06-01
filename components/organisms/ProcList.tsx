@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect,Fragment } from "react"
+import { useState, ChangeEvent, useEffect, Fragment } from "react"
 import style_procList from "components/organisms/ProcList.module.scss"
 import 'ress'
 import AddIcon from '@mui/icons-material/Add';
@@ -10,7 +10,13 @@ import { useDidUpdateEffect } from "@/hook/useDidUpdateEffect";
 import { useNowDate } from "@/hook/useNowDate"
 import { Task } from "../../types/task";
 
+
+
 export const ProcList = () => {
+  const [nowDate, setNowDate] = useState<string>('');
+  useEffect(() => {
+    setNowDate(useNowDate());
+  }, []);
 
   type TaskList = Array<[string, ...Array<Task>]>;
 
@@ -19,36 +25,36 @@ export const ProcList = () => {
       ['プロセス00',
         {
           'title': 'タスク00',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク01',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク02',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス01',
         {
           'title': 'タスク03',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク04',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス02',
         {
           'title': 'タスク05',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
     ]
@@ -129,7 +135,7 @@ export const ProcList = () => {
       ["newプロセス",
         {
           'title': 'newタスク',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
     );
@@ -144,7 +150,7 @@ export const ProcList = () => {
     newTask.push(
       {
         'title': 'newタスク',
-        'date': `${useNowDate()}`,
+        'date': `${nowDate}`,
         'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
       }
     )
@@ -302,7 +308,7 @@ export const ProcList = () => {
       {taskList.map((listElement, index) => {
         const listNo = index;
         return (
-          <Fragment  key={index}>
+          <Fragment key={index}>
             <ProcFrame index={index} grabListNo={grabListNo} grabTaskNo={grabTaskNo} listMouseDown={listMouseDown} trans={trans} key={index}>
               <dl>
                 <ProcTitle index={index} onChangeProcttl={onChangeProcttl}

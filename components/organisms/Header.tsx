@@ -1,44 +1,49 @@
-import { useNowDate } from "@/hook/useNowDate"
+import { useState,useEffect } from "react"
+import { useNowDate} from "@/hook/useNowDate"
 import style_header from "components/organisms/Header.module.scss"
 import 'ress'
 
 export const Header = () => {
+  const [nowDate, setNowDate] = useState<string>('');
+  useEffect(() => {
+    setNowDate(useNowDate());
+  }, []);
 
   const onReset = () => {
     const taskList = [
       ['プロセス00',
         {
           'title': 'タスク00',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク01',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク02',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス01',
         {
           'title': 'タスク03',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク04',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス02',
         {
           'title': 'タスク05',
-          'date': `${useNowDate()}`,
+          'date': `${nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
     ]
