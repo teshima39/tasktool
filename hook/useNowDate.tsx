@@ -1,10 +1,10 @@
-import {  getDate, getMonth, getYear } from 'date-fns'
-import { utcToZonedTime } from 'date-fns-tz'
+import format from 'date-fns/format'
 
 export const useNowDate = () => {
-  let d = utcToZonedTime(new Date(), 'UTC');
+  const now = new Date()
+  const date = format(now, 'yyyy/MM/dd')
 
 
-  return (`${d}`)
+  return (`${date}`)
 }
 
