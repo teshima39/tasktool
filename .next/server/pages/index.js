@@ -240,7 +240,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"useNowDate\": () => (/* binding */ useNowDate)\n/* harmony export */ });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"date-fns\");\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);\n\nconst useNowDate = ()=>{\n    let d = (0,date_fns__WEBPACK_IMPORTED_MODULE_0__.format)(new Date(), \"yyyy-MM-dd HH:mm\");\n    return `${d}`;\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ob29rL3VzZU5vd0RhdGUudHN4LmpzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUFrQztBQUUzQixNQUFNQyxhQUFhLElBQU07SUFDOUIsSUFBSUMsSUFBSUYsZ0RBQU1BLENBQUMsSUFBSUcsUUFBUTtJQUUzQixPQUFPLENBQUMsRUFBRUQsRUFBRSxDQUFDO0FBQ2YsRUFBQyIsInNvdXJjZXMiOlsid2VicGFjazovL215YmxvZy8uL2hvb2svdXNlTm93RGF0ZS50c3g/Yjk3YSJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBmb3JtYXQgfSBmcm9tICdkYXRlLWZucyc7XG5cbmV4cG9ydCBjb25zdCB1c2VOb3dEYXRlID0gKCkgPT4ge1xuICBsZXQgZCA9IGZvcm1hdChuZXcgRGF0ZSgpLCAneXl5eS1NTS1kZCBISDptbScpO1xuXG4gIHJldHVybiBgJHtkfWA7XG59XG4iXSwibmFtZXMiOlsiZm9ybWF0IiwidXNlTm93RGF0ZSIsImQiLCJEYXRlIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./hook/useNowDate.tsx\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"useNowDate\": () => (/* binding */ useNowDate)\n/* harmony export */ });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"date-fns\");\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var date_fns_locale_ja__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/locale/ja */ \"date-fns/locale/ja\");\n/* harmony import */ var date_fns_locale_ja__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(date_fns_locale_ja__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconst useNowDate = ()=>{\n    let d = (0,date_fns__WEBPACK_IMPORTED_MODULE_0__.format)(new Date(), \"yy-MM-dd HH:mm\", {\n        locale: (date_fns_locale_ja__WEBPACK_IMPORTED_MODULE_1___default())\n    });\n    return `${d}`;\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ob29rL3VzZU5vd0RhdGUudHN4LmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBQWtDO0FBQ0U7QUFFN0IsTUFBTUUsYUFBYSxJQUFNO0lBQzlCLElBQUlDLElBQUlILGdEQUFNQSxDQUFDLElBQUlJLFFBQVEsa0JBQWtCO1FBQUVDLFFBQVFKLDJEQUFFQTtJQUFDO0lBRTFELE9BQU8sQ0FBQyxFQUFFRSxFQUFFLENBQUM7QUFDZixFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbXlibG9nLy4vaG9vay91c2VOb3dEYXRlLnRzeD9iOTdhIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGZvcm1hdCB9IGZyb20gJ2RhdGUtZm5zJztcbmltcG9ydCBqYSBmcm9tIFwiZGF0ZS1mbnMvbG9jYWxlL2phXCI7XG5cbmV4cG9ydCBjb25zdCB1c2VOb3dEYXRlID0gKCkgPT4ge1xuICBsZXQgZCA9IGZvcm1hdChuZXcgRGF0ZSgpLCAneXktTU0tZGQgSEg6bW0nLCB7IGxvY2FsZTogamEgfSk7XG5cbiAgcmV0dXJuIGAke2R9YDtcbn1cbiJdLCJuYW1lcyI6WyJmb3JtYXQiLCJqYSIsInVzZU5vd0RhdGUiLCJkIiwiRGF0ZSIsImxvY2FsZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./hook/useNowDate.tsx\n");
 
 /***/ }),
 
@@ -317,6 +317,17 @@ module.exports = require("@mui/icons-material/Edit");
 
 "use strict";
 module.exports = require("date-fns");
+
+/***/ }),
+
+/***/ "date-fns/locale/ja":
+/*!*************************************!*\
+  !*** external "date-fns/locale/ja" ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("date-fns/locale/ja");
 
 /***/ }),
 
