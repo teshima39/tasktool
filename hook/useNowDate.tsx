@@ -12,6 +12,6 @@ export const useNowDate = () => {
   let hour = d.getHours().toString().padStart(2, '0');
   let minute = d.getMinutes().toString().padStart(2, '0');
 
-  return (`${year + '年' + month + '月' + day + '日' + '[' + dayname[dayofweek] + ']' + hour + ':' + minute}`)
+  return ("0000")
 }
 
