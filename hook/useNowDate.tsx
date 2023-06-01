@@ -1,7 +1,7 @@
-import { utcToZonedTime } from 'date-fns-tz'
+import { formatInTimeZone } from 'date-fns-tz';
 
 export const useNowDate = () => {
-  let d = utcToZonedTime(new Date(), 'Asia/Tokyo');
+  let d = new Date();
   let year = Number(d.getFullYear().toString().slice(-2));
   let month = d.getMonth() + 1;
   let day = d.getDate();
@@ -12,6 +12,6 @@ export const useNowDate = () => {
   let hour = d.getHours().toString().padStart(2, '0');
   let minute = d.getMinutes().toString().padStart(2, '0');
 
-  return ("0000")
+  return (formatInTimeZone(d, 'Asia/Tokyo', 'yyyy-MM-dd HH:mm:ss zzz'))
 }
 
