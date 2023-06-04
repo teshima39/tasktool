@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Header></Header>
-      <main>
+      <main id='main'>
         <ProcList></ProcList>
       </main >
     </>

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect, Fragment } from "react"
-import style_procList from "components/organisms/ProcList.module.scss"
+import style_procList from "../organisms/ProcList.module.scss"
 import 'ress'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -151,16 +151,16 @@ export const ProcList = () => {
         parentNode.style.visibility = "visible";
       }
       let ulWidth = document.getElementById('ul')?.clientWidth!;
-      let ulHeight = document.getElementById('ul')?.clientHeight!;
+      let mainHeight = document.getElementById('main')?.clientHeight!;
       setMousepositionX(
-        event.clientX - grabPositionX + window.scrollX < ulWidth - grabPositionX
+        event.clientX  + window.scrollX < ulWidth
           ? event.clientX - grabPositionX + window.scrollX
           : ulWidth - grabPositionX
       );
       setMousepositionY(
-        event.clientY - grabPositionY + window.scrollY < ulHeight - grabPositionY
+        event.clientY - grabPositionY + window.scrollY < mainHeight 
           ? event.clientY - grabPositionY + window.scrollY
-          : ulHeight - grabPositionY
+          : mainHeight
       );
     }
 
@@ -212,16 +212,16 @@ export const ProcList = () => {
         eventNode.style.visibility = "visible";
       }
       let ulWidth = document.getElementById('ul')?.clientWidth!;
-      let ulHeight = document.getElementById('ul')?.clientHeight!;
+      let mainHeight = document.getElementById('main')?.clientHeight!;
       setMousepositionX(
-        event.clientX - grabPositionX + window.scrollX < ulWidth - grabPositionX
+        event.clientX  + window.scrollX < ulWidth
           ? event.clientX - grabPositionX + window.scrollX
           : ulWidth - grabPositionX
       );
       setMousepositionY(
-        event.clientY - grabPositionY + window.scrollY < ulHeight - grabPositionY
+        event.clientY - grabPositionY + window.scrollY < mainHeight 
           ? event.clientY - grabPositionY + window.scrollY
-          : ulHeight - grabPositionY
+          : mainHeight
       );
     }
 
