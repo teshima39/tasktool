@@ -8,9 +8,10 @@ a,a:visited,a:link{
 }
 
 body{
-  min-width: fit-content;
+  width: fit-content;
+  height: fit-content;
   position: relative;
   overflow-x: scroll;
-  background-color: 	#EEEEEE;
+  background-color:#EEEEEE;
   padding: 0;
 }

@@ -5,9 +5,9 @@ import 'ress'
 type Props = {
   children?: ReactNode;
   index: number;
-  grabListNo: number | null;
+  grabProcNo: number | null;
   grabTaskNo: number | null;
-  listMouseDown: (event:React.MouseEvent<HTMLDivElement>) => void;
+  procMouseDown: (event: React.MouseEvent<HTMLDivElement>) => void;
   trans: any;
 }
 
@@ -16,10 +16,10 @@ export const ProcFrame: FC<Props> = (props) => {
   return (
     <li className={style_procFrame.list_bg}>
       <div className={style_procFrame.list_frame} id={`List__${props.index}`}
-        style={props.grabListNo == props.index ? props.trans as CSSProperties : undefined}>
+        style={props.grabProcNo == props.index ? props.trans as CSSProperties : undefined}>
         <div
           className={style_procFrame.grab_area}
-          onMouseDown={props.listMouseDown} id={`grabArea__${props.index}`}>
+          onMouseDown={props.procMouseDown} id={`grabArea__${props.index}`}>
         </div>
 
         {props.children}

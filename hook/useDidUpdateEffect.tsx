@@ -1,6 +1,6 @@
 import { useRef, useEffect, EffectCallback, DependencyList } from 'react';
 
-// 初回の実行がスキップされるuseEffect
+/* 初回の実行がスキップされるuseEffect */
 export const useDidUpdateEffect = (fn: EffectCallback, deps: DependencyList) => {
   const didMountRef = useRef(false);
 

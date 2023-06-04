@@ -4,11 +4,13 @@ import style_header from "components/organisms/Header.module.scss"
 import 'ress'
 
 export const Header = () => {
+  /* errors (425, 418, 423)回避のため  */
   const [nowDate, setNowDate] = useState<string>('');
   useEffect(() => {
     setNowDate(useNowDate());
   }, []);
 
+   /* 初期化ボタン */
   const onReset = () => {
     const taskList = [
       ['プロセス00',

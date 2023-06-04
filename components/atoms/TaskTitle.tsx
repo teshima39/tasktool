@@ -5,25 +5,25 @@ import { Task } from "../../types/task";
 
 type Props = {
   taskNo: number
-  listNo: number
+  procNo: number
   grabTaskNo: number | null
-  altGrabListNo: number | null
+  altgrabProcNo: number | null
   trans: any
   taskMouseDown: (event: MouseEvent<HTMLDivElement>) => void;
   taskElement: Task;
-  openModal:(listNo: number,taskNo: number) => void;
+  openModal: (procNo: number, taskNo: number) => void;
 }
 
 export const TaskTitle: FC<Props> = (props) => {
   return (
     <div onMouseDown={props.taskMouseDown}
-      style={props.altGrabListNo == props.listNo && props.grabTaskNo == props.taskNo ? props.trans as CSSProperties : undefined}
+      style={props.altgrabProcNo == props.procNo && props.grabTaskNo == props.taskNo ? props.trans as CSSProperties : undefined}
       className={style_taskTitle.task_frame}
-      id={`task__${props.listNo}${props.taskNo}`}>
-        
+      id={`task__${props.procNo}${props.taskNo}`}>
+
       {props.taskElement.title}
-      
-      <EditIcon fontSize='medium' className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.listNo, props.taskNo)}></EditIcon>
+
+      <EditIcon fontSize='medium' className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.procNo, props.taskNo)}></EditIcon>
     </div>
   )
 }

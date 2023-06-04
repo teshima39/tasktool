@@ -1,4 +1,4 @@
-import {MouseEvent, ReactNode, FC,Fragment } from 'react'
+import { MouseEvent, ReactNode, FC, Fragment } from 'react'
 import style_taskList from "components/molecules/TaskList.module.scss"
 import AddIcon from '@mui/icons-material/Add';
 import 'ress';
@@ -11,23 +11,24 @@ type TaskList = [string, ...Task[]];
 
 type Props = {
   children?: ReactNode;
-  listElement:TaskList;
+  listElement: TaskList;
   index: number;
-  listNo: number;
+  procNo: number;
   grabTaskNo: number | null;
-  altGrabListNo: number | null;
+  altgrabProcNo: number | null;
   trans: any;
-  taskMouseDown: (event:MouseEvent<HTMLDivElement>) => void;
+  taskMouseDown: (event: MouseEvent<HTMLDivElement>) => void;
   onClickAddTask: (event: MouseEvent<SVGSVGElement>) => void;
-  onChangeElement: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,listNo: number, taskNo: number, taskKey: string) => void;
-  onDeleteTask:(listNo: number,taskNo: number) => void;
-  closeModal:(listNo: number,taskNo: number) => void;
+  onChangeTaskElement: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, procNo: number, taskNo: number, taskKey: string) => void;
+  onDeleteTask: (procNo: number, taskNo: number) => void;
+  closeModal: (procNo: number, taskNo: number) => void;
 }
 
 export const TaskList: FC<Props> = (props) => {
 
-  const openModal = (listNo: number, taskNo: number) => {
-    let node = document.getElementById(`modal__${listNo}${taskNo}`)
+  /* モーダル開く */
+  const openModal = (procNo: number, taskNo: number) => {
+    let node = document.getElementById(`modal__${procNo}${taskNo}`)
     if (node) {
       node.style.display = 'block';
     }
@@ -40,9 +41,9 @@ export const TaskList: FC<Props> = (props) => {
           return (
             <Fragment key={taskNo}>
               <dd>
-                <TaskTitle taskNo={taskNo} listNo={props.listNo} taskMouseDown={props.taskMouseDown} grabTaskNo={props.grabTaskNo} altGrabListNo={props.altGrabListNo} trans={props.trans} taskElement={taskElement} openModal={openModal}></TaskTitle>
+                <TaskTitle taskNo={taskNo} procNo={props.procNo} taskMouseDown={props.taskMouseDown} grabTaskNo={props.grabTaskNo} altgrabProcNo={props.altgrabProcNo} trans={props.trans} taskElement={taskElement} openModal={openModal}></TaskTitle>
 
-                <ModalFrame listNo={props.listNo} taskNo={taskNo} onDeleteTask={props.onDeleteTask} onChangeElement={props.onChangeElement} taskElement={taskElement} closeModal={props.closeModal}></ModalFrame>
+                <ModalFrame procNo={props.procNo} taskNo={taskNo} onDeleteTask={props.onDeleteTask} onChangeTaskElement={props.onChangeTaskElement} taskElement={taskElement} closeModal={props.closeModal}></ModalFrame>
               </dd>
             </Fragment>
           )
