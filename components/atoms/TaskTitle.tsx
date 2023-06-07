@@ -23,7 +23,7 @@ export const TaskTitle: FC<Props> = (props) => {
 
       {props.taskElement.title}
 
-      <EditIcon fontSize='medium' className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.procNo, props.taskNo)}></EditIcon>
+      <EditIcon className={style_taskTitle.edit_icon} onClick={() => props.openModal(props.procNo, props.taskNo)}></EditIcon>
     </div>
   )
 }
