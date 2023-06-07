@@ -52,9 +52,8 @@ export const TaskList: FC<Props> = (props) => {
       <dd>
         <AddIcon
           className={style_taskList.addIcon}
-          fontSize="large"
           onClick={props.onClickAddTask}
-          id={String(props.index)} />
+          id={String(props.index)} style={{width:"40px",height:"40px"}}/>
       </dd>
     </>
   )

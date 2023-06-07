@@ -347,7 +347,7 @@ export const ProcList:FC<Props> = (props) => {
         )
       })}
       <li className={style_procList.list_last} style={{ visibility: taskList.length < 5 ? "visible" : "hidden" }}>
-        < AddIcon className={style_procList.addIcon} onClick={onClickAddProc} ></ AddIcon>
+        < AddIcon className={style_procList.addIcon} onClick={onClickAddProc} style={{width:"50px",height:"50px"}} ></ AddIcon>
       </li>
     </ul>
   )
