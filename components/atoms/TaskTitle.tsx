@@ -4,11 +4,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Task } from "../../types/task";
 
 type Props = {
-  taskNo: number
-  procNo: number
-  grabTaskNo: number | null
-  altgrabProcNo: number | null
-  trans: any
+  taskNo: number;
+  procNo: number;
+  grabTaskNo: number | null;
+  altgrabProcNo: number | null;
+  trans: any;
   taskMouseDown: (event: MouseEvent<HTMLDivElement>) => void;
   taskElement: Task;
   openModal: (procNo: number, taskNo: number) => void;

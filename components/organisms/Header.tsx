@@ -1,14 +1,13 @@
-import { useState,useEffect } from "react"
-import { useNowDate} from "@/hook/useNowDate"
+import { FC } from "react"
 import style_header from "components/organisms/Header.module.scss"
 import 'ress'
 
-export const Header = () => {
-  /* errors (425, 418, 423)回避のため  */
-  const [nowDate, setNowDate] = useState<string>('');
-  useEffect(() => {
-    setNowDate(useNowDate());
-  }, []);
+type Props = {
+  nowDate:string;
+}
+
+
+export const Header:FC<Props> = (props) => {
 
    /* 初期化ボタン */
   const onReset = () => {
@@ -16,36 +15,36 @@ export const Header = () => {
       ['プロセス00',
         {
           'title': 'タスク00',
-          'date': `${nowDate}`,
+          'date': `${props.nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク01',
-          'date': `${nowDate}`,
+          'date': `${props.nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク02',
-          'date': `${nowDate}`,
+          'date': `${props.nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス01',
         {
           'title': 'タスク03',
-          'date': `${nowDate}`,
+          'date': `${props.nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         },
         {
           'title': 'タスク04',
-          'date': `${nowDate}`,
+          'date': `${props.nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }],
 
       ['プロセス02',
         {
           'title': 'タスク05',
-          'date': `${nowDate}`,
+          'date': `${props.nowDate}`,
           'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
         }]
     ]

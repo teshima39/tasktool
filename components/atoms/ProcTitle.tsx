@@ -2,8 +2,8 @@ import { ReactNode, FC } from "react";
 import style_procTitle from "components/atoms/ProcTitle.module.scss"
 
 type Props = {
-  children?: ReactNode
-  index: number
+  children?: ReactNode;
+  index: number;
   value: string;
   onChangeProcttl: (event: React.ChangeEvent<HTMLInputElement>, procNo: number) => void;
 }

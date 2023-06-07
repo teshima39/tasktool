@@ -4,8 +4,8 @@ import { Task } from "../../types/task";
 
 type Props = {
   onChangeTaskElement: (event: React.ChangeEvent<HTMLInputElement>, procNo: number, taskNo: number, taskKey: string) => void;
-  procNo: number
-  taskNo: number
+  procNo: number;
+  taskNo: number;
   taskElement: Task;
 }
 
