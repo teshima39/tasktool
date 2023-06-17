@@ -59,7 +59,7 @@ export const Header:FC<Props> = (props) => {
 
   return (
     <header className={style_header.header}>
-      <h1>APP-Title</h1>
+      <h1>tasktool</h1>
       <div className={style_header.txt}>
         <p>各プロセス・タスクはドラックし、移動することができます。<br />（プロセスは<span className={style_header.purple}>網目</span>部分が掴めます。）<br /><span className={style_header.blue}>編集</span>アイコンでタスクの内容を編集でき、<br />ゴミ箱アイコンで削除できます。</p>
       </div>

@@ -24,7 +24,6 @@ export const ProcFrame: FC<Props> = (props) => {
 
         {props.children}
 
-        <div className={`${style_procFrame.taskMoveFrame}`} style={{ visibility: props.grabTaskNo != null ? "visible" : "hidden" }} id={`taskMoveFrame__${props.index}`}></div>
       </div>
     </li>
   )

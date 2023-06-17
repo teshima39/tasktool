@@ -36,6 +36,7 @@ export const TaskList: FC<Props> = (props) => {
 
   return (
     <>
+    <dd className={`${style_taskList.taskInsertArea} ${props.grabTaskNo != null ? style_taskList.taskInsertArea_active : ''}`} id={`taskInsertArea__${props.procNo}1`}></dd>
       {props.listElement.map((taskElement: any, taskNo: number) => {
         if (taskNo != 0) {
           return (
@@ -45,6 +46,8 @@ export const TaskList: FC<Props> = (props) => {
 
                 <ModalFrame procNo={props.procNo} taskNo={taskNo} onDeleteTask={props.onDeleteTask} onChangeTaskElement={props.onChangeTaskElement} taskElement={taskElement} closeModal={props.closeModal}></ModalFrame>
               </dd>
+              <dd
+              className={`${style_taskList.taskInsertArea} ${props.grabTaskNo != null ? style_taskList.taskInsertArea_active : ''}`} id={`taskInsertArea__${props.procNo}${taskNo + 1}`} ></dd>
             </Fragment>
           )
         }

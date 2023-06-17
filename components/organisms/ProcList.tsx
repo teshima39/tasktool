@@ -10,11 +10,11 @@ import { useDidUpdateEffect } from "../../hook/useDidUpdateEffect";
 import { Task } from "../../types/task";
 
 type Props = {
-  nowDate:string;
+  nowDate: string;
 }
 
 
-export const ProcList:FC<Props> = (props) => {
+export const ProcList: FC<Props> = (props) => {
 
   /* タスク配列  */
   type TaskList = Array<[string, ...Array<Task>]>;
@@ -88,7 +88,8 @@ export const ProcList:FC<Props> = (props) => {
   const trans: any = {
     transform: `translate(${mousepositionX}px, ${mousepositionY}px)`,
     position: 'relative',
-    zIndex: '999'
+    zIndex: '999',
+    opacity: '0.8'
   };
 
   /* プロセス追加  */
@@ -137,11 +138,10 @@ export const ProcList:FC<Props> = (props) => {
         parentNode.style.visibility = "hidden";
       }
       let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-      let elemBelowId = elemBelow?.getAttribute('id')?.replace("procInsertArea__", "");
-
-      if (elemBelowId != null) {
-        elemBelowProcNo = Number(elemBelowId);
-      } else { elemBelowProcNo = null }
+      let elemBelowId = elemBelow?.getAttribute('id');
+      if (elemBelowId?.includes('procInsertArea__')) {
+        elemBelowProcNo = Number(elemBelowId.replace("procInsertArea__", ""));
+      }
       if (eventNode && eventNode.parentNode) {
         const parentNode = eventNode.parentNode as HTMLElement;
         eventNode.style.visibility = "visible";
@@ -150,12 +150,12 @@ export const ProcList:FC<Props> = (props) => {
       let ulWidth = document.getElementById('ul')?.clientWidth!;
       let mainHeight = document.getElementById('main')?.clientHeight!;
       setMousepositionX(
-        event.clientX  + window.scrollX < ulWidth
+        event.clientX + window.scrollX < ulWidth
           ? event.clientX - grabPositionX + window.scrollX
           : ulWidth - grabPositionX
       );
       setMousepositionY(
-        event.clientY - grabPositionY + window.scrollY < mainHeight 
+        event.clientY - grabPositionY + window.scrollY < mainHeight
           ? event.clientY - grabPositionY + window.scrollY
           : mainHeight
       );
@@ -193,30 +193,37 @@ export const ProcList:FC<Props> = (props) => {
   /* タスククリック  */
   const taskMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     const eventNode = event.currentTarget;
-    let elemBelowtaskNo: number | null = null;
-
+    let insertedProcNo: number | null = null;
+    let insertedTaskNo: number | null = null;
     /* タスクマウス追従  */
     const taskMouseMove = (event: MouseEvent) => {
       if (eventNode) {
         eventNode.style.visibility = "hidden";
       }
       let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-      let elemBelowId = elemBelow?.getAttribute('id')?.replace("taskMoveFrame__", "");
-      if (elemBelowId != null) {
-        elemBelowtaskNo = Number(elemBelowId);
-      } else { elemBelowtaskNo = null }
+      let elemBelowId = elemBelow?.getAttribute('id');
+      if (elemBelowId?.includes('taskInsertArea__') && elemBelow) {
+        let elemBelowIndex = String(elemBelowId).replace('taskInsertArea__', '').split('');
+        let elemBelowIndex__0 = elemBelowIndex[0];
+        let elemBelowIndex__1 = elemBelowIndex[1];
+        insertedProcNo = Number(elemBelowIndex__0);
+        insertedTaskNo = Number(elemBelowIndex__1);
+      } else {
+        insertedProcNo = null;
+        insertedTaskNo = null;
+      }
       if (eventNode) {
         eventNode.style.visibility = "visible";
       }
       let ulWidth = document.getElementById('ul')?.clientWidth!;
       let mainHeight = document.getElementById('main')?.clientHeight!;
       setMousepositionX(
-        event.clientX  + window.scrollX < ulWidth
+        event.clientX + window.scrollX < ulWidth
           ? event.clientX - grabPositionX + window.scrollX
           : ulWidth - grabPositionX
       );
       setMousepositionY(
-        event.clientY - grabPositionY + window.scrollY < mainHeight 
+        event.clientY - grabPositionY + window.scrollY < mainHeight
           ? event.clientY - grabPositionY + window.scrollY
           : mainHeight
       );
@@ -233,23 +240,34 @@ export const ProcList:FC<Props> = (props) => {
     setAltgrabProcNo(procNo);
 
     /* タスク並び替え  */
-    const taskSort = (procNo: number | null, taskNo: number | null, elemBelowtaskNo: number | null) => {
-      if (procNo != null && taskNo != null && elemBelowtaskNo != null && elemBelowtaskNo >= 0 && procNo != elemBelowtaskNo) {
+    const taskSort = (procNo: number | null, taskNo: number | null, insertedProcNo: number | null, insertedTaskNo: number | null) => {
+      if (procNo != null && taskNo != null && insertedProcNo != null && insertedTaskNo != null) {
         let newTaskList = [...taskList]
-        let insertTaskList = [...taskList][elemBelowtaskNo]
-        let beforeTaskList = taskList[procNo]
+        let moveProc = taskList[procNo]
         let moveTask = taskList[procNo][taskNo]
-        beforeTaskList.splice(taskNo, 1)
-        insertTaskList.push(moveTask)
-        newTaskList.splice(procNo, 1, beforeTaskList)
-        newTaskList.splice(elemBelowtaskNo, 1, insertTaskList)
-        setTaskList(newTaskList)
+        let insertedProc = [...taskList][insertedProcNo]
+        if (procNo == insertedProcNo) {
+          insertedProc.splice(insertedTaskNo, 0, moveTask)
+          if (taskNo > insertedTaskNo) {
+            insertedProc.splice(taskNo + 1, 1)
+          } else {
+            insertedProc.splice(taskNo, 1)
+          }
+          newTaskList.splice(insertedProcNo, 1, insertedProc)
+          setTaskList(newTaskList)
+        }
+        else {
+          moveProc.splice(taskNo, 1)
+          insertedProc.splice(insertedTaskNo, 0, moveTask)
+          newTaskList.splice(insertedProcNo, 1, insertedProc)
+          setTaskList(newTaskList)
+        }
       }
     };
 
     if (eventNode) {
       eventNode.onmouseup = () => {
-        taskSort(procNo, taskNo, elemBelowtaskNo)
+        taskSort(procNo, taskNo, insertedProcNo, insertedTaskNo)
         document.removeEventListener("mousemove", taskMouseMove);
         setMousepositionX(0);
         setMousepositionY(0);
@@ -331,11 +349,11 @@ export const ProcList:FC<Props> = (props) => {
         return (
           <Fragment key={index}>
             <ProcFrame index={index} grabProcNo={grabProcNo} grabTaskNo={grabTaskNo} procMouseDown={procMouseDown} trans={trans} key={index}>
+              <DeleteIcon fontSize="small" className={style_procList.list_delete} onClick={() => onDeleteProc(index)}></DeleteIcon>
               <dl>
                 <ProcTitle index={index} onChangeProcttl={onChangeProcttl}
                   value={taskList[index][0]} key={index}>
                 </ProcTitle>
-                <DeleteIcon fontSize="small" className={style_procList.list_delete} onClick={() => onDeleteProc(index)}></DeleteIcon>
                 <TaskList listElement={listElement} index={index} procNo={procNo} grabTaskNo={grabTaskNo} altgrabProcNo={altgrabProcNo} taskMouseDown={taskMouseDown} onClickAddTask={onClickAddTask} trans={trans} onChangeTaskElement={onChangeTaskElement}
                   onDeleteTask={onDeleteTask} closeModal={closeModal} >
                 </TaskList>
@@ -347,7 +365,7 @@ export const ProcList:FC<Props> = (props) => {
         )
       })}
       <li className={style_procList.list_last} style={{ visibility: taskList.length < 5 ? "visible" : "hidden" }}>
-        < AddIcon className={style_procList.addIcon} onClick={onClickAddProc} style={{width:"50px",height:"50px"}} ></ AddIcon>
+        < AddIcon className={style_procList.addIcon} onClick={onClickAddProc} style={{ width: "50px", height: "50px" }} ></ AddIcon>
       </li>
     </ul>
   )
