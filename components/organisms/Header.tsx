@@ -53,7 +53,7 @@ export const Header:FC<Props> = (props) => {
     if (result) {
       let taskListJson = JSON.stringify(taskList, undefined, 1);
       localStorage.setItem('taskList', taskListJson);
-      location.reload()
+      location.reload();
     }
   }
 

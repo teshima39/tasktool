@@ -119,14 +119,14 @@ export const ProcList: FC<Props> = (props) => {
         'comment': 'txtxtxtxtxtxtxtxtxtxtxt'
       }
     )
-    newTaskList.splice(addtaskNo, 1, newTask)
-    setTaskList(newTaskList)
+    newTaskList.splice(addtaskNo, 1, newTask);
+    setTaskList(newTaskList);
   };
 
   /* プロセスクリック  */
   const procMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     const eventNode = event.currentTarget;
-    procNo = Number(eventNode.getAttribute('id')?.replace("grabArea__", ""))
+    procNo = Number(eventNode.getAttribute('id')?.replace("grabArea__", ""));
     setgrabProcNo(procNo);
     let elemBelowProcNo: number | null = null;
 
@@ -169,11 +169,11 @@ export const ProcList: FC<Props> = (props) => {
     const processSort = (grabIndex: number | null, elemBelowProcNo: number | null) => {
       if (grabIndex != null && elemBelowProcNo != null && elemBelowProcNo >= 0 && grabIndex != elemBelowProcNo) {
         let newTaskList = [...taskList]
-        let remove = newTaskList.splice(grabIndex, 1)
+        let remove = newTaskList.splice(grabIndex, 1);
         if (grabIndex > elemBelowProcNo) { newTaskList.splice(elemBelowProcNo, 0, remove[0]) } else {
-          newTaskList.splice(elemBelowProcNo - 1, 0, remove[0])
+          newTaskList.splice(elemBelowProcNo - 1, 0, remove[0]);
         }
-        setTaskList(newTaskList)
+        setTaskList(newTaskList);
       }
     };
 
@@ -228,10 +228,10 @@ export const ProcList: FC<Props> = (props) => {
     }
 
     document.addEventListener("mousemove", taskMouseMove as EventListener);
-    let taskId = String(eventNode.getAttribute('id'))
-    taskId = taskId?.replace("task__", "")
-    procNo = Number((taskId)[0])
-    taskNo = Number((taskId)[1])
+    let taskId = String(eventNode.getAttribute('id'));
+    taskId = taskId?.replace("task__", "");
+    procNo = Number((taskId)[0]);
+    taskNo = Number((taskId)[1]);
     grabPositionX = eventNode.getBoundingClientRect().left + window.scrollX + eventNode.offsetWidth / 2;
     grabPositionY = eventNode.getBoundingClientRect().top + window.scrollY + eventNode.offsetHeight / 2;
     setGrabTaskNo(taskNo);
@@ -240,32 +240,32 @@ export const ProcList: FC<Props> = (props) => {
     /* タスク並び替え  */
     const taskSort = (procNo: number | null, taskNo: number | null, elemBelowProcNo: number | null, elemBelowTaskNo: number | null) => {
       if (procNo != null && taskNo != null && elemBelowProcNo != null && elemBelowTaskNo != null) {
-        let newTaskList = [...taskList]
-        let moveProc = taskList[procNo]
-        let moveTask = taskList[procNo][taskNo]
-        let insertedProc = [...taskList][elemBelowProcNo]
+        let newTaskList = [...taskList];
+        let moveProc = taskList[procNo];
+        let moveTask = taskList[procNo][taskNo];
+        let insertedProc = [...taskList][elemBelowProcNo];
         if (procNo == elemBelowProcNo) {
-          insertedProc.splice(elemBelowTaskNo, 0, moveTask)
+          insertedProc.splice(elemBelowTaskNo, 0, moveTask);
           if (taskNo > elemBelowTaskNo) {
-            insertedProc.splice(taskNo + 1, 1)
+            insertedProc.splice(taskNo + 1, 1);
           } else {
-            insertedProc.splice(taskNo, 1)
+            insertedProc.splice(taskNo, 1);
           }
-          newTaskList.splice(elemBelowProcNo, 1, insertedProc)
-          setTaskList(newTaskList)
+          newTaskList.splice(elemBelowProcNo, 1, insertedProc);
+          setTaskList(newTaskList);
         }
         else {
           moveProc.splice(taskNo, 1)
-          insertedProc.splice(elemBelowTaskNo, 0, moveTask)
-          newTaskList.splice(elemBelowProcNo, 1, insertedProc)
-          setTaskList(newTaskList)
+          insertedProc.splice(elemBelowTaskNo, 0, moveTask);
+          newTaskList.splice(elemBelowProcNo, 1, insertedProc);
+          setTaskList(newTaskList);
         }
       }
     };
 
     if (eventNode) {
       eventNode.onmouseup = () => {
-        taskSort(procNo, taskNo, elemBelowProcNo, elemBelowTaskNo)
+        taskSort(procNo, taskNo, elemBelowProcNo, elemBelowTaskNo);
         document.removeEventListener("mousemove", taskMouseMove);
         setMousepositionX(0);
         setMousepositionY(0);
@@ -279,7 +279,7 @@ export const ProcList: FC<Props> = (props) => {
   /* プロセスタイトル変更  */
   const onChangeProcttl = (event: ChangeEvent<HTMLInputElement>, procNo: number) => {
     if (event.target.value.length <= 10) {
-      let changeList = taskList[procNo]
+      let changeList = taskList[procNo];
       changeList[0] = event.target.value;
       setTaskList(
         taskList.map((element, index) => (
@@ -309,9 +309,9 @@ export const ProcList: FC<Props> = (props) => {
   const onDeleteProc = (procNo: number) => {
     let result = confirm('削除します。よろしいですか？');
     if (result) {
-      let newTaskList = [...taskList]
-      newTaskList.splice(procNo, 1)
-      setTaskList(newTaskList)
+      let newTaskList = [...taskList];
+      newTaskList.splice(procNo, 1);
+      setTaskList(newTaskList);
     }
   };
 
@@ -319,8 +319,8 @@ export const ProcList: FC<Props> = (props) => {
   const onDeleteTask = (procNo: number, taskNo: number) => {
     let result = confirm('削除します。よろしいですか？');
     if (result) {
-      let changeList = taskList[procNo]
-      changeList.splice(taskNo, 1)
+      let changeList = taskList[procNo];
+      changeList.splice(taskNo, 1);
       setTaskList(
         taskList.map((element, index) => (
           index === procNo ? changeList : element
@@ -332,7 +332,7 @@ export const ProcList: FC<Props> = (props) => {
 
   /* モーダル閉じる */
   const closeModal = (procNo: number, taskNo: number) => {
-    let node = document.getElementById(`modal__${procNo}${taskNo}`)
+    let node = document.getElementById(`modal__${procNo}${taskNo}`);
     if (node) {
       node.style.display = 'none';
     }
