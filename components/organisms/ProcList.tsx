@@ -125,7 +125,7 @@ export const ProcList: FC<Props> = (props) => {
 
   /* プロセスクリック  */
   const procMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-    const eventNode = event.currentTarget as HTMLDivElement;
+    const eventNode = event.currentTarget;
     procNo = Number(eventNode.getAttribute('id')?.replace("grabArea__", ""))
     setgrabProcNo(procNo);
     let elemBelowProcNo: number | null = null;
@@ -193,8 +193,9 @@ export const ProcList: FC<Props> = (props) => {
   /* タスククリック  */
   const taskMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     const eventNode = event.currentTarget;
-    let insertedProcNo: number | null = null;
-    let insertedTaskNo: number | null = null;
+    let elemBelowProcNo: number | null = null;
+    let elemBelowTaskNo: number | null = null;
+
     /* タスクマウス追従  */
     const taskMouseMove = (event: MouseEvent) => {
       if (eventNode) {
@@ -206,11 +207,8 @@ export const ProcList: FC<Props> = (props) => {
         let elemBelowIndex = String(elemBelowId).replace('taskInsertArea__', '').split('');
         let elemBelowIndex__0 = elemBelowIndex[0];
         let elemBelowIndex__1 = elemBelowIndex[1];
-        insertedProcNo = Number(elemBelowIndex__0);
-        insertedTaskNo = Number(elemBelowIndex__1);
-      } else {
-        insertedProcNo = null;
-        insertedTaskNo = null;
+        elemBelowProcNo = Number(elemBelowIndex__0);
+        elemBelowTaskNo = Number(elemBelowIndex__1);
       }
       if (eventNode) {
         eventNode.style.visibility = "visible";
@@ -240,26 +238,26 @@ export const ProcList: FC<Props> = (props) => {
     setAltgrabProcNo(procNo);
 
     /* タスク並び替え  */
-    const taskSort = (procNo: number | null, taskNo: number | null, insertedProcNo: number | null, insertedTaskNo: number | null) => {
-      if (procNo != null && taskNo != null && insertedProcNo != null && insertedTaskNo != null) {
+    const taskSort = (procNo: number | null, taskNo: number | null, elemBelowProcNo: number | null, elemBelowTaskNo: number | null) => {
+      if (procNo != null && taskNo != null && elemBelowProcNo != null && elemBelowTaskNo != null) {
         let newTaskList = [...taskList]
         let moveProc = taskList[procNo]
         let moveTask = taskList[procNo][taskNo]
-        let insertedProc = [...taskList][insertedProcNo]
-        if (procNo == insertedProcNo) {
-          insertedProc.splice(insertedTaskNo, 0, moveTask)
-          if (taskNo > insertedTaskNo) {
+        let insertedProc = [...taskList][elemBelowProcNo]
+        if (procNo == elemBelowProcNo) {
+          insertedProc.splice(elemBelowTaskNo, 0, moveTask)
+          if (taskNo > elemBelowTaskNo) {
             insertedProc.splice(taskNo + 1, 1)
           } else {
             insertedProc.splice(taskNo, 1)
           }
-          newTaskList.splice(insertedProcNo, 1, insertedProc)
+          newTaskList.splice(elemBelowProcNo, 1, insertedProc)
           setTaskList(newTaskList)
         }
         else {
           moveProc.splice(taskNo, 1)
-          insertedProc.splice(insertedTaskNo, 0, moveTask)
-          newTaskList.splice(insertedProcNo, 1, insertedProc)
+          insertedProc.splice(elemBelowTaskNo, 0, moveTask)
+          newTaskList.splice(elemBelowProcNo, 1, insertedProc)
           setTaskList(newTaskList)
         }
       }
@@ -267,7 +265,7 @@ export const ProcList: FC<Props> = (props) => {
 
     if (eventNode) {
       eventNode.onmouseup = () => {
-        taskSort(procNo, taskNo, insertedProcNo, insertedTaskNo)
+        taskSort(procNo, taskNo, elemBelowProcNo, elemBelowTaskNo)
         document.removeEventListener("mousemove", taskMouseMove);
         setMousepositionX(0);
         setMousepositionY(0);
